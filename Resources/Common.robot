@@ -4,44 +4,39 @@ Library  AppiumLibrary
 *** Variables ***
 
 ${platformName}         ios
-#${platformVersion}     15  # Set your default version
+${platformVersion}     15  # Set your default version
 ${deviceName}           iPhone.*
 ${visual}               True
 ${network}              True
 ${isRealMobile}         True
-${LT_APP_ID}            ''
+${LT_APP_ID}            'lt://proverbial-ios'
 ${LT_GRID_URL}          ''
-${TIMEOUT}              3000
+#{TIMEOUT}              3000
 
 
 *** Keywords ***
 
 Open test app
-    [Timeout]   ${TIMEOUT}
-    ${CAPABILITIES}=    Create Dictionary
-    ...   platformName=${platformName}
-    ...   platformVersion=${version}
-    ...   deviceName=${deviceName}
-    ...   visual=${visual}
-    ...   network=${network}
-    ...   devicelog=${devicelog}
-    ...   isRealMobile=${isRealMobile}
-    ...   name=LT_Appium_Robot_App_iOS
-    ...   build=LT_Appium_Robot_App_Automation
-    ...   app=${LT_APP_ID}
+    [Timeout]   ${TIMEOUT} 
+    
     TRY
         ${REMOTE_URL}=    Set Variable If    '%{LT_GRID_URL}' == ''    mobile-hub.lambdatest.com    %{LT_GRID_URL}
     EXCEPT
         ${REMOTE_URL}=    Set Variable    mobile-hub.lambdatest.com
     END
-    TRY
-        ${APP_ID}=    Set Variable If    '%{LT_APP_ID}' == ''    lt://proverbial-ios    %{LT_APP_ID}
-    EXCEPT
-        ${APP_ID}=    Set Variable    lt://proverbial-ios
-    END
-    ${REMOTE_URL}=   Set Variable       https://%{LT_USERNAME}:%{LT_ACCESS_KEY}@${REMOTE_URL}/wd/hub
+    ${REMOTE_URL}=   Set Variable       https://XXXXXXXXXXX:XXXXXXXXXXXXXXX@${REMOTE_URL}/wd/hub
+    &{LT_Options}    Create Dictionary
+    ...    isRealMobile=true
+    ...    deviceName=iPhone.*
+    ...    w3c=true
+    ...    platformName=ios
+    ...    app=lt://proverbial-ios
+    ...    build=Robot_RD_S4
 
-    Open Application  ${REMOTE_URL}  platformName=ios  platformVersion=${version}  deviceName=${deviceName}  visual=${visual}  network=${network}  devicelog=${devicelog}  isRealMobile=${isRealMobile}  app=${APP_ID}  name=LT_Appium_Robot_App_iOS  build=LT_Appium_Robot_App_Automation
+    Log To Console  ${LT_Options}
+
+    Open Application  ${REMOTE_URL}  &{LT_Options}
+    
 
 Close test app
     Close All Applications

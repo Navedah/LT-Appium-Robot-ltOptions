@@ -1,74 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.1 (Python 3.10.8 on darwin)" generated="20230106 14:18:26.936" rpa="false" schemaversion="3">
-<suite id="s1" name="AndroidIosWeb" source="/Users/ankitagarwal/Documents/Code-Snippet/LT-appium-python-robot/Tests/AndroidIosWeb.robot">
+<robot generator="Robot 7.1.1 (Python 3.12.6 on linux)" generated="2024-11-14T15:44:19.926502" rpa="false" schemaversion="5">
+<suite id="s1" name="IOS" source="/workspace/LT-appium-python-robot/Tests/IOS.robot">
 <test id="s1-t1" name="Example of connecting to Lambdatest via Robot Framework" line="13">
-<kw name="Open test app" library="CommonWeb" type="SETUP">
-<kw name="Open Application" library="AppiumLibrary">
+<kw name="Open test app" owner="Common" type="SETUP">
+<try>
+<branch type="TRY">
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2024-11-14T15:44:20.057797" level="FAIL">Environment variable '%{LT_GRID_URL}' not found.</msg>
+<var>${REMOTE_URL}</var>
+<arg>'%{LT_GRID_URL}' == ''</arg>
+<arg>mobile-hub.lambdatest.com</arg>
+<arg>%{LT_GRID_URL}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="FAIL" start="2024-11-14T15:44:20.056849" elapsed="0.001011">Environment variable '%{LT_GRID_URL}' not found.</status>
+</kw>
+<status status="FAIL" start="2024-11-14T15:44:20.056325" elapsed="0.001644">Environment variable '%{LT_GRID_URL}' not found.</status>
+</branch>
+<branch type="EXCEPT">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-11-14T15:44:20.058403" level="INFO">${REMOTE_URL} = mobile-hub.lambdatest.com</msg>
+<var>${REMOTE_URL}</var>
+<arg>mobile-hub.lambdatest.com</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-11-14T15:44:20.058140" elapsed="0.000290"/>
+</kw>
+<status status="PASS" start="2024-11-14T15:44:20.058033" elapsed="0.000440"/>
+</branch>
+<status status="PASS" start="2024-11-14T15:44:20.056271" elapsed="0.002240"/>
+</try>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-11-14T15:44:20.058869" level="INFO">${REMOTE_URL} = https://naveda:auB5Xdtg4MwB5Jei5zYWOeHJZfoCPADNg8hNQLSH3z1rEm2sTH@mobile-hub.lambdatest.com/wd/hub</msg>
+<var>${REMOTE_URL}</var>
+<arg>https://naveda:auB5Xdtg4MwB5Jei5zYWOeHJZfoCPADNg8hNQLSH3z1rEm2sTH@${REMOTE_URL}/wd/hub</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-11-14T15:44:20.058615" elapsed="0.000279"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-11-14T15:44:20.059500" level="INFO">&amp;{LT_Options} = { isRealMobile=true | deviceName=iPhone.* | w3c=true | platformName=ios | app=lt://proverbial-ios | build=Robot_RD_S4 }</msg>
+<var>&amp;{LT_Options}</var>
+<arg>isRealMobile=true</arg>
+<arg>deviceName=iPhone.*</arg>
+<arg>w3c=true</arg>
+<arg>platformName=ios</arg>
+<arg>app=lt://proverbial-ios</arg>
+<arg>build=Robot_RD_S4</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-11-14T15:44:20.059006" elapsed="0.000523"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${LT_Options}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-11-14T15:44:20.059658" elapsed="0.000258"/>
+</kw>
+<kw name="Open Application" owner="AppiumLibrary">
 <arg>${REMOTE_URL}</arg>
-<arg>platformName=android</arg>
-<arg>platformVersion=${version}</arg>
-<arg>deviceName=${deviceName}</arg>
-<arg>visual=${visual}</arg>
-<arg>network=${network}</arg>
-<arg>isRealMobile=${isRealMobile}</arg>
-<arg>name="RobotFramework Lambda Test"</arg>
+<arg>&amp;{LT_Options}</arg>
 <doc>Opens a new application to given Appium server.
 Capabilities of appium server, Android and iOS,
 Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
 | *Option*            | *Man.* | *Description*     |
 | remote_url          | Yes    | Appium server url |
 | alias               | no     | alias             |</doc>
-<status status="PASS" starttime="20230106 14:18:27.017" endtime="20230106 14:18:42.919"/>
+<status status="PASS" start="2024-11-14T15:44:20.060022" elapsed="35.539493"/>
 </kw>
 <timeout value="50 minutes"/>
-<status status="PASS" starttime="20230106 14:18:27.017" endtime="20230106 14:18:42.920"/>
+<status status="PASS" start="2024-11-14T15:44:20.055860" elapsed="35.543805"/>
 </kw>
-<kw name="Go To Url" library="AppiumLibrary">
-<arg>https://mfml.in/api/getInfo</arg>
-<doc>Opens URL in default web browser.</doc>
-<status status="PASS" starttime="20230106 14:18:42.920" endtime="20230106 14:18:46.821"/>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2024-11-14T15:44:55.601397" level="INFO">Clicking element 'id=color'.</msg>
+<arg>id=color</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2024-11-14T15:44:55.599919" elapsed="1.677864"/>
 </kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>10 seconds</arg>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2024-11-14T15:44:57.279720" level="INFO">Clicking element 'id=Text'.</msg>
+<arg>id=Text</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2024-11-14T15:44:57.278101" elapsed="1.273963"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2024-11-14T15:44:58.554187" level="INFO">Clicking element 'id=toast'.</msg>
+<arg>id=toast</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2024-11-14T15:44:58.552357" elapsed="1.169723"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2024-11-14T15:44:59.724116" level="INFO">Clicking element 'id=notification'.</msg>
+<arg>id=notification</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2024-11-14T15:44:59.722400" elapsed="1.156804"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2024-11-14T15:45:00.881293" level="INFO">Clicking element 'id=geoLocation'.</msg>
+<arg>id=geoLocation</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2024-11-14T15:45:00.879586" elapsed="1.177431"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T15:45:04.057713" level="INFO">Slept 2 seconds.</msg>
+<arg>2 seconds</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230106 14:18:56.822" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20230106 14:18:46.821" endtime="20230106 14:18:56.824"/>
+<status status="PASS" start="2024-11-14T15:45:02.057307" elapsed="2.000583"/>
 </kw>
-<kw name="Click Element" library="AppiumLibrary">
-<arg>id=resolution</arg>
-<doc>Click element identified by `locator`.</doc>
-<msg timestamp="20230106 14:18:56.827" level="INFO">Clicking element 'id=resolution'.</msg>
-<status status="PASS" starttime="20230106 14:18:56.824" endtime="20230106 14:18:58.316"/>
-</kw>
-<kw name="Click Element" library="AppiumLibrary">
-<arg>id=location</arg>
-<doc>Click element identified by `locator`.</doc>
-<msg timestamp="20230106 14:18:58.321" level="INFO">Clicking element 'id=location'.</msg>
-<status status="PASS" starttime="20230106 14:18:58.316" endtime="20230106 14:18:59.708"/>
-</kw>
-<kw name="Click Element" library="AppiumLibrary">
-<arg>id=details</arg>
-<doc>Click element identified by `locator`.</doc>
-<msg timestamp="20230106 14:18:59.710" level="INFO">Clicking element 'id=details'.</msg>
-<status status="PASS" starttime="20230106 14:18:59.709" endtime="20230106 14:19:00.968"/>
-</kw>
-<kw name="Click Element" library="AppiumLibrary">
-<arg>id=timezone</arg>
-<doc>Click element identified by `locator`.</doc>
-<msg timestamp="20230106 14:19:00.969" level="INFO">Clicking element 'id=timezone'.</msg>
-<status status="PASS" starttime="20230106 14:19:00.968" endtime="20230106 14:19:02.199"/>
-</kw>
-<kw name="Close test app" library="CommonWeb" type="TEARDOWN">
-<kw name="Close All Applications" library="AppiumLibrary">
+<kw name="Close test app" owner="Common" type="TEARDOWN">
+<kw name="Close All Applications" owner="AppiumLibrary">
 <doc>Closes all open applications.</doc>
-<status status="PASS" starttime="20230106 14:19:02.200" endtime="20230106 14:19:02.507"/>
+<status status="PASS" start="2024-11-14T15:45:04.058948" elapsed="0.149955"/>
 </kw>
-<status status="PASS" starttime="20230106 14:19:02.199" endtime="20230106 14:19:02.507"/>
+<status status="PASS" start="2024-11-14T15:45:04.058504" elapsed="0.150550"/>
 </kw>
 <timeout value="50 minutes"/>
-<status status="PASS" starttime="20230106 14:18:27.017" endtime="20230106 14:19:02.507"/>
+<status status="PASS" start="2024-11-14T15:44:20.054477" elapsed="44.154725"/>
 </test>
-<status status="PASS" starttime="20230106 14:18:26.937" endtime="20230106 14:19:02.508"/>
+<status status="PASS" start="2024-11-14T15:44:19.927572" elapsed="44.282759"/>
 </suite>
 <statistics>
 <total>
@@ -77,7 +121,7 @@ Please check https://github.com/appium/appium/blob/master/docs/en/writing-runnin
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="AndroidIosWeb">AndroidIosWeb</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="IOS">IOS</stat>
 </suite>
 </statistics>
 <errors>

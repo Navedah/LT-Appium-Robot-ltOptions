@@ -1,4 +1,4 @@
-selenium==3.141.0
+selenium==4.0.0
 urllib3==1.26.6
 robotframework
 robotframework-appiumlibrary
